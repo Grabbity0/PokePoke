@@ -1,0 +1,38 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">PokemonDictionary</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="pokemon_id">PokemonId</string>
+    <string name="dictionary_no_prefix">NO. %1$d</string>
+    <string name="loading_text" tools:ignore="TypographyEllipsis">...</string>
+    <string name="separation_line">------------------------------------</string>
+    <string name="height">Height : %1$s m</string>
+    <string name="weight">Weight : %1$s kg</string>
+    <string name="blank_type">non</string>
+    <string name="gender">Gender :</string>
+    <string name="gender_value">%1$s %%</string>
+
+    <string-array name="background_color">
+        <item>normal</item>
+        <item>fire</item>
+        <item>water</item>
+        <item>grass</item>
+        <item>electric</item>
+        <item>ice</item>
+        <item>fighting</item>
+        <item>poison</item>
+        <item>ground</item>
+        <item>flying</item>
+        <item>psychic</item>
+        <item>bug</item>
+        <item>rock</item>
+        <item>ghost</item>
+        <item>dragon</item>
+        <item>dark</item>
+        <item>steel</item>
+        <item>fairy</item>
+
+    </string-array>
+</resources>

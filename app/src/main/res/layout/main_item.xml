@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="mainItem"
+            type="com.example.pokemondictionary.dto.PokemonSimpleDTO" />
+
+        <variable
+            name="clickListener"
+            type="com.example.pokemondictionary.MainItemClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_mainitem_layout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{() -> clickListener.onItemClicked(mainItem)}">
+
+        <ImageView
+            android:id="@+id/iv_mainitem_pokemon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/pokeball_l"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
+
+        <TextView
+            android:id="@+id/tv_mainitem_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="116dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/main_no"
+            android:fontFamily="@font/maplefont"
+            android:gravity="center"
+            android:text="@{mainItem.id}"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_mainitem_name"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="no" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_mainitem_type_contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_mainitem_type_main"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="100dp"
+                android:background="@drawable/main_type"
+                android:fontFamily="@font/maplefont"
+                android:gravity="center"
+                android:text="@{mainItem.typeMain}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="type1" />
+
+            <TextView
+                android:id="@+id/tv_mainitem_type_sub"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/main_type"
+                android:fontFamily="@font/maplefont"
+                android:gravity="center"
+                android:text="@{mainItem.typeSub}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="type2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_mainitem_name"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/main_name"
+            android:fontFamily="@font/maplefont"
+            android:paddingLeft="10dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:text="@{mainItem.name}"
+            android:textSize="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_mainitem_pokemon"
+            tools:text="name" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

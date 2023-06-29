@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".DictionaryMainPageFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_maindictionary_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_maindictionary_contents"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/dictionary_main"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_maindictionary_c_whitebox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="140dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <View
+                    android:id="@+id/v_maindictionary_c_w_background"
+                    android:layout_width="272dp"
+                    android:layout_height="192dp"
+                    android:background="#000000"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_maindictionary_c_whitebox"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/dictionary_screen"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_maindictionary_c_w_pokemon_image"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="70dp"
+                    android:layout_marginBottom="50dp"
+                    android:src="@drawable/pokeball_l"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_maindictionary_c_w_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="34dp"
+                    android:text="@string/loading_text"
+                    android:textSize="20dp"
+                    android:textStyle="italic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="no" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_maindictionary_c_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="400dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_maindictionary_c_m_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/dictionary_name"
+                    android:fontFamily="@font/dnfbitbit"
+                    android:gravity="center"
+                    android:text="@string/loading_text"
+                    android:textSize="22dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="name" />
+
+                <TextView
+                    android:id="@+id/tv_maindictionary_c_m_type1"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/dictionary_type"
+                    android:fontFamily="@font/maplefont"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text="@string/loading_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_maindictionary_c_m_name"
+                    tools:text="type1"/>
+
+                <TextView
+                    android:id="@+id/tv_maindictionary_c_m_type2"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="3dp"
+                    android:background="@drawable/dictionary_type"
+                    android:fontFamily="@font/maplefont"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text="@string/loading_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_maindictionary_c_m_name"
+                    tools:text="type2"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_maindictionary_c_details"
+                android:layout_width="310dp"
+                android:layout_height="210dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/iv_maindictionary_c_d_background"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/dictionary_details_back"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_maindictionary_c_d_species"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/maplefont"
+                    android:lines="1"
+                    android:text="@string/loading_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="species" />
+
+                <TextView
+                    android:id="@+id/tv_maindictionary_c_d_separate1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/maplefont"
+                    android:lines="1"
+                    android:text="@string/loading_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_maindictionary_c_d_species"
+                    tools:text="separation" />
+
+                <TextView
+                    android:id="@+id/tv_maindictionary_c_d_flavor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/maplefont"
+                    android:lines="6"
+                    android:paddingRight="10dp"
+                    android:text="@string/loading_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_maindictionary_c_d_separate1"
+                    tools:text="flavor" />
+
+                <TextView
+                    android:id="@+id/tv_maindictionary_c_d_separate2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/maplefont"
+                    android:lines="1"
+                    android:text="@string/loading_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_maindictionary_c_d_flavor"
+                    tools:text="separation" />
+
+                <TextView
+                    android:id="@+id/tv_maindictionary_c_d_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/maplefont"
+                    android:text="@string/loading_text"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_maindictionary_c_d_height"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="gender" />
+
+                <TextView
+                    android:id="@+id/tv_maindictionary_c_d_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginBottom="5dp"
+                    android:drawableLeft="@drawable/male"
+                    android:gravity="center"
+                    android:text="@string/loading_text"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_maindictionary_c_d_height"
+                    app:layout_constraintStart_toEndOf="@+id/tv_maindictionary_c_d_gender"
+                    tools:text="male" />
+
+                <TextView
+                    android:id="@+id/tv_maindictionary_c_d_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginBottom="5dp"
+                    android:drawableLeft="@drawable/female"
+                    android:drawablePadding="5dp"
+                    android:text="@string/loading_text"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_maindictionary_c_d_height"
+                    app:layout_constraintStart_toEndOf="@+id/tv_maindictionary_c_d_male"
+                    tools:text="female" />
+
+                <TextView
+                    android:id="@+id/tv_maindictionary_c_d_height"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/maplefont"
+                    android:lines="1"
+                    android:text="@string/loading_text"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="height" />
+
+                <TextView
+                    android:id="@+id/tv_maindictionary_c_d_weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="160dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/maplefont"
+                    android:lines="1"
+                    android:text="@string/loading_text"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="weight" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

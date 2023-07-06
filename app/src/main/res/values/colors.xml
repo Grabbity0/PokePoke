@@ -38,6 +38,7 @@
     <color name="type_fairy">#DAB4D4</color>
     <!--progress bar-->
     <color name="progressbar_background">#999999</color>
+    <color name="progressbar_less_80_stats">#FF2222</color>
     <color name="progressbar_standard_stats">#80FF00</color>
     <color name="progressbar_over_150_stats">#FFD700</color>
     <color name="text_standard_stats">#000000</color>

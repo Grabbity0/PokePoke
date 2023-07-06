@@ -36,7 +36,7 @@
             android:layout_marginEnd="10dp"
             android:max="720"
             android:progress="@{progressbar.total}"
-            android:progressDrawable="@{progressbar.total >= 600 ? @drawable/custom_progressbar_gold : @drawable/custom_progressbar}"
+            android:progressDrawable="@{progressbar.total >= 600 ? @drawable/custom_progressbar_gold : @drawable/custom_progressbar_green}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/wiget_tv_total" />
@@ -87,7 +87,7 @@
             android:layout_marginEnd="10dp"
             android:max="255"
             android:progress="@{progressbar.hp}"
-            android:progressDrawable="@{progressbar.hp >= 150 ? @drawable/custom_progressbar_gold : @drawable/custom_progressbar}"
+            android:progressDrawable="@{progressbar.hp >= 150 ? @drawable/custom_progressbar_gold : (progressbar.hp >= 50 ? @drawable/custom_progressbar_green : @drawable/custom_progressbar_red)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/wiget_tv_hp" />
@@ -126,7 +126,7 @@
             android:layout_marginEnd="10dp"
             android:max="255"
             android:progress="@{progressbar.attack}"
-            android:progressDrawable="@{progressbar.attack >= 150 ? @drawable/custom_progressbar_gold : @drawable/custom_progressbar}"
+            android:progressDrawable="@{progressbar.attack >= 150 ? @drawable/custom_progressbar_gold : (progressbar.attack >= 50 ? @drawable/custom_progressbar_green : @drawable/custom_progressbar_red)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/wiget_tv_attack" />
@@ -165,7 +165,7 @@
             android:layout_marginEnd="10dp"
             android:max="255"
             android:progress="@{progressbar.defense}"
-            android:progressDrawable="@{progressbar.defense >= 150 ? @drawable/custom_progressbar_gold : @drawable/custom_progressbar}"
+            android:progressDrawable="@{progressbar.defense >= 150 ? @drawable/custom_progressbar_gold : (progressbar.defense >= 50 ? @drawable/custom_progressbar_green : @drawable/custom_progressbar_red)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/wiget_tv_defense" />
@@ -204,7 +204,7 @@
             android:layout_marginEnd="10dp"
             android:max="255"
             android:progress="@{progressbar.specialAttack}"
-            android:progressDrawable="@{progressbar.specialAttack >= 150 ? @drawable/custom_progressbar_gold : @drawable/custom_progressbar}"
+            android:progressDrawable="@{progressbar.specialAttack >= 150 ? @drawable/custom_progressbar_gold : (progressbar.specialAttack >= 50 ? @drawable/custom_progressbar_green : @drawable/custom_progressbar_red)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/wiget_tv_special_attack" />
@@ -243,7 +243,7 @@
             android:layout_marginEnd="10dp"
             android:max="255"
             android:progress="@{progressbar.specialDefense}"
-            android:progressDrawable="@{progressbar.specialDefense >= 150 ? @drawable/custom_progressbar_gold : @drawable/custom_progressbar}"
+            android:progressDrawable="@{progressbar.specialDefense >= 150 ? @drawable/custom_progressbar_gold : (progressbar.specialDefense >= 50 ? @drawable/custom_progressbar_green : @drawable/custom_progressbar_red)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/wiget_tv_special_defense" />
@@ -283,7 +283,7 @@
             android:layout_marginBottom="5dp"
             android:max="255"
             android:progress="@{progressbar.speed}"
-            android:progressDrawable="@{progressbar.speed >= 150 ? @drawable/custom_progressbar_gold : @drawable/custom_progressbar}"
+            android:progressDrawable="@{progressbar.speed >= 150 ? @drawable/custom_progressbar_gold : (progressbar.speed >= 50 ? @drawable/custom_progressbar_green : @drawable/custom_progressbar_red)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

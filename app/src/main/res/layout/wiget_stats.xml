@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="progressbar"
+            type="com.example.pokemondictionary.databinding.PokemonStatsProgressBar" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dictionary_details_back"
+        android:padding="6dp">
+
+        <TextView
+            android:id="@+id/wiget_tv_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dnfbitbit"
+            android:text="@string/total"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/wiget_progressbar_total"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:max="720"
+            android:progress="@{progressbar.total}"
+            android:progressDrawable="@{progressbar.total >= 600 ? @drawable/custom_progressbar_gold : @drawable/custom_progressbar}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wiget_tv_total" />
+
+        <TextView
+            android:id="@+id/wiget_tv_total_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dnfbitbit"
+            android:text="@{Integer.toString(progressbar.total)}"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/wiget_progressbar_total"
+            app:layout_constraintEnd_toEndOf="@+id/wiget_progressbar_total"
+            app:layout_constraintStart_toStartOf="@+id/wiget_progressbar_total"
+            app:layout_constraintTop_toTopOf="@+id/wiget_progressbar_total" />
+
+        <TextView
+            android:id="@+id/wiget_tv_hp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/dnfbitbit"
+            android:text="@string/hp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wiget_progressbar_total" />
+
+        <TextView
+            android:id="@+id/wiget_tv_hp_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="28dp"
+            android:fontFamily="@font/dnfbitbit"
+            android:gravity="center"
+            android:text="@{Integer.toString(progressbar.hp)}"
+            app:layout_constraintEnd_toStartOf="@+id/wiget_progressbar_hp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wiget_tv_hp" />
+
+        <ProgressBar
+            android:id="@+id/wiget_progressbar_hp"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="10dp"
+            android:max="255"
+            android:progress="@{progressbar.hp}"
+            android:progressDrawable="@{progressbar.hp >= 150 ? @drawable/custom_progressbar_gold : @drawable/custom_progressbar}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wiget_tv_hp" />
+
+        <TextView
+            android:id="@+id/wiget_tv_attack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/dnfbitbit"
+            android:text="@string/attack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wiget_progressbar_hp" />
+
+        <TextView
+            android:id="@+id/wiget_tv_attack_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/dnfbitbit"
+            android:gravity="center"
+            android:text="@{Integer.toString(progressbar.attack)}"
+            app:layout_constraintEnd_toStartOf="@+id/wiget_progressbar_attack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wiget_tv_attack" />
+
+        <ProgressBar
+            android:id="@+id/wiget_progressbar_attack"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="10dp"
+            android:max="255"
+            android:progress="@{progressbar.attack}"
+            android:progressDrawable="@{progressbar.attack >= 150 ? @drawable/custom_progressbar_gold : @drawable/custom_progressbar}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wiget_tv_attack" />
+
+        <TextView
+            android:id="@+id/wiget_tv_defense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/dnfbitbit"
+            android:text="@string/defense"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wiget_progressbar_attack" />
+
+        <TextView
+            android:id="@+id/wiget_tv_defense_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/dnfbitbit"
+            android:gravity="center"
+            android:text="@{Integer.toString(progressbar.defense)}"
+            app:layout_constraintEnd_toStartOf="@+id/wiget_progressbar_defense"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wiget_tv_defense" />
+
+        <ProgressBar
+            android:id="@+id/wiget_progressbar_defense"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="10dp"
+            android:max="255"
+            android:progress="@{progressbar.defense}"
+            android:progressDrawable="@{progressbar.defense >= 150 ? @drawable/custom_progressbar_gold : @drawable/custom_progressbar}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wiget_tv_defense" />
+
+        <TextView
+            android:id="@+id/wiget_tv_special_attack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/dnfbitbit"
+            android:text="@string/special_attack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wiget_progressbar_defense" />
+
+        <TextView
+            android:id="@+id/wiget_tv_special_attack_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/dnfbitbit"
+            android:gravity="center"
+            android:text="@{Integer.toString(progressbar.specialAttack)}"
+            app:layout_constraintEnd_toStartOf="@+id/wiget_progressbar_special_attack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wiget_tv_special_attack" />
+
+        <ProgressBar
+            android:id="@+id/wiget_progressbar_special_attack"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="10dp"
+            android:max="255"
+            android:progress="@{progressbar.specialAttack}"
+            android:progressDrawable="@{progressbar.specialAttack >= 150 ? @drawable/custom_progressbar_gold : @drawable/custom_progressbar}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wiget_tv_special_attack" />
+
+        <TextView
+            android:id="@+id/wiget_tv_special_defense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/dnfbitbit"
+            android:text="@string/special_defense"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wiget_progressbar_special_attack" />
+
+        <TextView
+            android:id="@+id/wiget_tv_special_defense_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/dnfbitbit"
+            android:gravity="center"
+            android:text="@{Integer.toString(progressbar.specialDefense)}"
+            app:layout_constraintEnd_toStartOf="@+id/wiget_progressbar_special_defense"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wiget_tv_special_defense" />
+
+        <ProgressBar
+            android:id="@+id/wiget_progressbar_special_defense"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="10dp"
+            android:max="255"
+            android:progress="@{progressbar.specialDefense}"
+            android:progressDrawable="@{progressbar.specialDefense >= 150 ? @drawable/custom_progressbar_gold : @drawable/custom_progressbar}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wiget_tv_special_defense" />
+
+        <TextView
+            android:id="@+id/wiget_tv_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/dnfbitbit"
+            android:text="@string/speed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wiget_progressbar_special_defense" />
+
+        <TextView
+            android:id="@+id/wiget_tv_speed_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/dnfbitbit"
+            android:gravity="center"
+            android:text="@{Integer.toString(progressbar.speed)}"
+            app:layout_constraintEnd_toStartOf="@+id/wiget_progressbar_speed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wiget_tv_speed" />
+
+        <ProgressBar
+            android:id="@+id/wiget_progressbar_speed"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:max="255"
+            android:progress="@{progressbar.speed}"
+            android:progressDrawable="@{progressbar.speed >= 150 ? @drawable/custom_progressbar_gold : @drawable/custom_progressbar}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wiget_tv_speed" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

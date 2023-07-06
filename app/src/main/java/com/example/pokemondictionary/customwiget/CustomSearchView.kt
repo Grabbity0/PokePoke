@@ -1,4 +1,4 @@
-package com.example.pokemondictionary.customview
+package com.example.pokemondictionary.customwiget
 
 import android.content.Context
 import android.util.AttributeSet

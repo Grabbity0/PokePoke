@@ -19,6 +19,66 @@
                 android:layout_height="match_parent"
                 android:background="@color/transparent">
 
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/transparent"
+                    android:fillViewport="true"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_main_pokemon_list"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                        <com.facebook.shimmer.ShimmerFrameLayout
+                            android:id="@+id/sfl_main_recyclerview_shimmer"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <include layout="@layout/main_item_shimmer"/>
+
+                                <include layout="@layout/main_item_shimmer"/>
+
+                                <include layout="@layout/main_item_shimmer"/>
+
+                                <include layout="@layout/main_item_shimmer"/>
+
+                                <include layout="@layout/main_item_shimmer"/>
+
+                                <include layout="@layout/main_item_shimmer"/>
+
+                                <include layout="@layout/main_item_shimmer"/>
+
+                                <include layout="@layout/main_item_shimmer"/>
+
+                                <include layout="@layout/main_item_shimmer"/>
+
+                            </LinearLayout>
+
+                        </com.facebook.shimmer.ShimmerFrameLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.core.widget.NestedScrollView>
+
                 <com.google.android.material.appbar.AppBarLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -41,12 +101,11 @@
                             app:contentInsetStart="0dp"
                             app:contentInsetStartWithNavigation="0dp">
 
-                            <com.example.pokemondictionary.customview.CustomSearchView
+                            <com.example.pokemondictionary.customwiget.CustomSearchView
                                 android:id="@+id/sv_main_search"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/searchview"
-                                android:focusable="true"
                                 app:iconifiedByDefault="false"
                                 app:queryHint="Search"
                                 app:searchIcon="@drawable/pokeball_s" />
@@ -54,69 +113,95 @@
                     </com.google.android.material.appbar.CollapsingToolbarLayout>
                 </com.google.android.material.appbar.AppBarLayout>
 
-                <androidx.core.widget.NestedScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/transparent"
-                    android:fillViewport="true"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_main_loading_background"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/faded_activty"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_main_loading_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/loading_box"
+                    android:padding="4dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_main_pokemon_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </androidx.core.widget.NestedScrollView>
+                    <ImageView
+                        android:id="@+id/iv_main_loading_pokeball"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/loading_pokeball_animation"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+                    <ImageView
+                        android:id="@+id/iv_main_loading_text"
+                        android:layout_width="80dp"
+                        android:layout_height="15dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/loading_text_animation"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_main_loading_pokeball" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                android:id="@+id/cl_main_animation"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent">-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--                <View-->
-<!--                    android:id="@+id/view"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    app:layout_constraintBottom_toTopOf="@id/iv_main_top_decoration"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent" />-->
+            <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--                android:id="@+id/cl_main_animation"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent">-->
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/iv_main_top_decoration"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent"-->
-<!--                    app:layout_constraintVertical_bias="0.4"-->
-<!--                    app:srcCompat="@drawable/ic_launcher_foreground" />-->
+            <!--                <View-->
+            <!--                    android:id="@+id/view"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    app:layout_constraintBottom_toTopOf="@id/iv_main_top_decoration"-->
+            <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                    app:layout_constraintStart_toStartOf="parent" />-->
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/iv_main_bottom_decoration"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent"-->
-<!--                    app:layout_constraintVertical_bias="0.6"-->
-<!--                    app:srcCompat="@drawable/ic_launcher_foreground" />-->
+            <!--                <ImageView-->
+            <!--                    android:id="@+id/iv_main_top_decoration"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                    app:layout_constraintStart_toStartOf="parent"-->
+            <!--                    app:layout_constraintTop_toTopOf="parent"-->
+            <!--                    app:layout_constraintVertical_bias="0.4"-->
+            <!--                    app:srcCompat="@drawable/ic_launcher_foreground" />-->
 
-<!--                <View-->
-<!--                    android:id="@+id/view2"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@id/iv_main_bottom_decoration" />-->
+            <!--                <ImageView-->
+            <!--                    android:id="@+id/iv_main_bottom_decoration"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                    app:layout_constraintStart_toStartOf="parent"-->
+            <!--                    app:layout_constraintTop_toTopOf="parent"-->
+            <!--                    app:layout_constraintVertical_bias="0.6"-->
+            <!--                    app:srcCompat="@drawable/ic_launcher_foreground" />-->
 
-<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+            <!--                <View-->
+            <!--                    android:id="@+id/view2"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                    app:layout_constraintStart_toStartOf="parent"-->
+            <!--                    app:layout_constraintTop_toBottomOf="@id/iv_main_bottom_decoration" />-->
+
+            <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

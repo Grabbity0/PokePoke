@@ -1,6 +1,5 @@
 package com.example.pokemondictionary.getapi
 
-import com.example.pokemondictionary.PokeApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -26,7 +25,7 @@ class ApiService{
         return pokemonList
     }
 
-    suspend fun getPokemonDetails(pokemonId: Int) : PokemonDetails?{
+    suspend fun getPokemonDetails(pokemonId: Any) : PokemonDetails?{
         val pokemonDetails: PokemonDetails? = try {
             api.getPokemonDetails(pokemonId)
 
@@ -60,6 +59,16 @@ class ApiService{
         return pokemonSpecies
     }
 
+    suspend fun getPokemonEvolutionChain(evolutionId: Int) : PokemonEvolutionChain?{
+        val pokemonEvolutionChain: PokemonEvolutionChain? = try{
+            api.getPokemonEvolutionChain(evolutionId)
+        } catch( e: Exception){
+            e.printStackTrace()
+            null
+        }
+
+        return pokemonEvolutionChain
+    }
 }
 
 

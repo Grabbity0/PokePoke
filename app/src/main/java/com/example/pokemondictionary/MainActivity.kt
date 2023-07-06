@@ -1,10 +1,13 @@
 package com.example.pokemondictionary
 
 import android.content.ContentValues
+import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View.GONE
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +16,7 @@ import com.example.pokemondictionary.SplashLoadingActivity.Companion.pokemonData
 import com.example.pokemondictionary.databinding.ActivityMainBinding
 import com.example.pokemondictionary.dto.PokemonSimpleDTO
 import com.example.pokemondictionary.dto.convert
+import com.example.pokemondictionary.getapi.PokeApi
 import com.example.pokemondictionary.viewmodel.SharedViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -43,11 +47,31 @@ class MainActivity : AppCompatActivity(), MainItemClickListener {
 
         sharedViewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
 
+        val drawablePokeball: AnimationDrawable = ContextCompat.getDrawable(this, R.drawable.loading_pokeball_animation) as AnimationDrawable
+        binding.ivMainLoadingPokeball.background = drawablePokeball
+
+        val drawableText: AnimationDrawable = ContextCompat.getDrawable(this, R.drawable.loading_text_animation) as AnimationDrawable
+        binding.ivMainLoadingText.background = drawableText
+
+
+        binding.sflMainRecyclerviewShimmer.startShimmer()
+
+        drawablePokeball.start()
+        drawableText.start()
+
+        searchView(binding)
+        binding.svMainSearch.searchSrcTextView.isEnabled = false
+
         CoroutineScope(Dispatchers.IO).launch {
             defaultList = mainDataSet()
             withContext(Dispatchers.Main) {
                 adapter.submitList(defaultList)
-                searchView(binding)
+                binding.clMainLoadingBackground.visibility = GONE
+                binding.sflMainRecyclerviewShimmer.visibility = GONE
+                binding.sflMainRecyclerviewShimmer.stopShimmer()
+                drawablePokeball.stop()
+                drawableText.stop()
+                binding.svMainSearch.searchSrcTextView.isEnabled = true
             }
         }
 
@@ -94,10 +118,15 @@ class MainActivity : AppCompatActivity(), MainItemClickListener {
                     val regex = Regex("$query")
 
                     for (search in defaultList) {
-                        val result = search.name?.let { regex.containsMatchIn(it) } == true
-                        if (result) {
+                        val resultWithName = search.name?.let { regex.containsMatchIn(it) } == true
+                        if (resultWithName) {
                             searchedList.add(search)
                         }
+                        val resultWithNo = search.id?.let{regex.containsMatchIn(it)} == true
+                        if (resultWithNo){
+                            searchedList.add(search)
+                        }
+
                     }
                     adapter.submitList(searchedList)
                 }

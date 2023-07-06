@@ -6,13 +6,25 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="pokemon_id">PokemonId</string>
     <string name="dictionary_no_prefix">NO. %1$d</string>
+    <string name="no">NO.</string>
+    <string name="non"> -</string>
     <string name="loading_text" tools:ignore="TypographyEllipsis">...</string>
     <string name="separation_line">------------------------------------</string>
     <string name="height">Height : %1$s m</string>
     <string name="weight">Weight : %1$s kg</string>
-    <string name="blank_type">non</string>
+    <string name="blank_type">-</string>
     <string name="gender">Gender :</string>
     <string name="gender_value">%1$s %%</string>
+    <string name="evolution_chain">EVOLUTION CHAIN</string>
+    <string name="total">TOTAL</string>
+    <string name="hp">HP</string>
+    <string name="attack">ATTACK</string>
+    <string name="defense">DEFENSE</string>
+    <string name="special_attack">SPECIAL ATTACK</string>
+    <string name="special_defense">SPECIAL DEFENSE</string>
+    <string name="speed">SPEED</string>
+    <string name="pokepoke">PokePoke</string>
+    <string name="dictionary">Dictionary</string>
 
     <string-array name="background_color">
         <item>normal</item>
@@ -33,6 +45,6 @@
         <item>dark</item>
         <item>steel</item>
         <item>fairy</item>
-
     </string-array>
+
 </resources>

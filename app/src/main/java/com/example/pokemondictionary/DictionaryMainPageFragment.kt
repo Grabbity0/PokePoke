@@ -1,7 +1,7 @@
 package com.example.pokemondictionary
 
-import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,16 +9,17 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.pokemondictionary.databinding.FragmentDetailDictionaryBinding
 import com.example.pokemondictionary.databinding.FragmentDictionaryMainPageBinding
+import com.example.pokemondictionary.databinding.FragmentDictionarySubPageBinding
 import com.example.pokemondictionary.viewmodel.DetailsViewModel
+import com.example.pokemondictionary.viewmodel.ScrollbarViewModel
 import com.example.pokemondictionary.viewmodel.SpeciesViewModel
 
 class DictionaryMainPageFragment : Fragment() {
-
-    private lateinit var binding: FragmentDictionaryMainPageBinding
+    private lateinit var bindingMainPage: FragmentDictionaryMainPageBinding
     private lateinit var detailsViewModel: DetailsViewModel
     private lateinit var speciesViewModel: SpeciesViewModel
+    private lateinit var scrollbarViewModel: ScrollbarViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +32,8 @@ class DictionaryMainPageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentDictionaryMainPageBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
+        bindingMainPage = FragmentDictionaryMainPageBinding.inflate(inflater, container, false)
+        bindingMainPage.lifecycleOwner = viewLifecycleOwner
 
         detailsViewModel =
             ViewModelProvider(requireParentFragment()).get(DetailsViewModel::class.java)
@@ -40,15 +41,18 @@ class DictionaryMainPageFragment : Fragment() {
         speciesViewModel =
             ViewModelProvider(requireParentFragment()).get(SpeciesViewModel::class.java)
 
+        scrollbarViewModel =
+            ViewModelProvider(requireParentFragment()).get(ScrollbarViewModel::class.java)
+
         detailsViewModel.selectedPokemonDetails.observe(viewLifecycleOwner) { pokemonDetails ->
 
             println(pokemonDetails)
 
-            Glide.with(binding.root.context)
+            Glide.with(bindingMainPage.root.context)
                 .load(pokemonDetails.sprites?.other?.officialArtwork?.frontDefault)
-                .into(binding.ivMaindictionaryCWPokemonImage)
+                .into(bindingMainPage.ivMaindictionaryCWPokemonImage)
 
-            with(binding) {
+            with(bindingMainPage) {
                 val pkno = getString(R.string.dictionary_no_prefix, pokemonDetails.id)
                 tvMaindictionaryCWNo.text = pkno
 
@@ -109,7 +113,7 @@ class DictionaryMainPageFragment : Fragment() {
         }
         speciesViewModel.selectedPokemonSpecies.observe(viewLifecycleOwner) { pokemonSpecies ->
 
-            with(binding) {
+            with(bindingMainPage) {
                 tvMaindictionaryCDSpecies.text =
                     pokemonSpecies.genera.find { it.language.name == "en" }?.genus
 
@@ -133,14 +137,31 @@ class DictionaryMainPageFragment : Fragment() {
 
                 tvMaindictionaryCDGender.text = getString(R.string.gender)
                 val genderRate = pokemonSpecies.genderRate
-                val female = "%.1f".format((genderRate / 8.0 * 100))
-                val male = "%.1f".format(100 - female.toFloat())
-                tvMaindictionaryCDMale.text = getString(R.string.gender_value, male)
-                tvMaindictionaryCDFemale.text = getString(R.string.gender_value, female)
+                if(genderRate != -1) {
+                    val female = "%.1f".format((genderRate / 8.0 * 100))
+                    val male = "%.1f".format(100 - female.toFloat())
+                    tvMaindictionaryCDMale.text = getString(R.string.gender_value, male)
+                    tvMaindictionaryCDFemale.text = getString(R.string.gender_value, female)
+                } else{
+                    tvMaindictionaryCDMale.text = getString(R.string.non)
+                    tvMaindictionaryCDFemale.text = getString(R.string.non)
+                }
             }
         }
 
-        return binding.root
+        bindingMainPage.svMaindictionaryScroll.setOnScrollChangeListener{_, _, height, _, _ ->
+            scrollbarViewModel.setScrollBarHeight(height)
+        }
+
+        scrollbarViewModel.scrollBarHeight.observe(viewLifecycleOwner){height ->
+            with(bindingMainPage.svMaindictionaryScroll){
+                if(scrollY != height){
+                    scrollTo(0, height)
+                }
+            }
+        }
+
+        return bindingMainPage.root
     }
 
 }

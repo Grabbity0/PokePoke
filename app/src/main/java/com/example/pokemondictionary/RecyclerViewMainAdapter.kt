@@ -27,6 +27,7 @@ class RecyclerViewMainAdapter(private val itemClickListener: MainItemClickListen
         val pokemonData = getItem(position)
 
         holder.bind(pokemonData)
+
     }
 
     class ItemClickListener(val clickListener: (mainItemId: PokemonSimpleDTO) -> Unit): MainItemClickListener {

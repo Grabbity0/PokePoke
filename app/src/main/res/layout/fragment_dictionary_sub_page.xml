@@ -4,22 +4,234 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".DictionarySubPageFragment">
 
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="progressbar"
+            type="com.example.pokemondictionary.databinding.PokemonStatsProgressBar" />
+
+        <variable
+            name="evolution"
+            type="com.example.pokemondictionary.databinding.PokemonEvolutionChainDetails" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_subdictionary_parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_subdictionary_contents"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/dictionary_sub"
+        <ScrollView
+            android:id="@+id/sv_subdictionary_scroll"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fillViewport="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_subdictionary_contents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dictionary_sub">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_subdictionary_c_evolutionchain"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="140dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/dictionary_details_back"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_subdictionary_evolution_chain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/maplefont"
+                        android:text="@string/evolution_chain"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_subdictionary_evolution_chain">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_evolution_chain_item1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/iv_evolution_chain_item_pokemon1"
+                                android:layout_width="95dp"
+                                android:layout_height="95dp"
+                                android:scaleType="centerInside"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/pokeball_s_resize" />
+
+                            <TextView
+                                android:id="@+id/tv_evolution_chain_item_no1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/maplefont"
+                                android:text="@{@string/no + evolution.evolution[0].number}"
+                                android:textSize="20dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/iv_evolution_chain_item_pokemon1" />
+
+                            <TextView
+                                android:id="@+id/tv_evolution_chain_item_name1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/maplefont"
+                                android:text="@{evolution.evolution[0].name}"
+                                android:textSize="13dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_evolution_chain_item_no1" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_evolution_chain_item2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            android:visibility="@{evolution.evolution.size() > 1 ? View.VISIBLE : View.GONE}">
+
+                            <ImageView
+                                android:id="@+id/iv_evolution_chain_item_pokemon2"
+                                android:layout_width="95dp"
+                                android:layout_height="95dp"
+                                android:scaleType="centerInside"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/pokeball_s_resize" />
+
+                            <TextView
+                                android:id="@+id/tv_evolution_chain_item_no2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/maplefont"
+                                android:text="@{@string/no + (evolution.evolution.size() > 1 ? evolution.evolution[1].number : null)}"
+                                android:textSize="20dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/iv_evolution_chain_item_pokemon2" />
+
+                            <TextView
+                                android:id="@+id/tv_evolution_chain_item_name2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/maplefont"
+                                android:text="@{evolution.evolution.size() > 1 ? evolution.evolution[1].name : null}"
+                                android:textSize="13dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_evolution_chain_item_no2" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_evolution_chain_item3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            android:visibility="@{evolution.evolution.size() > 2 ? View.VISIBLE : View.GONE}">
+
+                            <ImageView
+                                android:id="@+id/iv_evolution_chain_item_pokemon3"
+                                android:layout_width="95dp"
+                                android:layout_height="95dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/pokeball_s_resize" />
+
+                            <TextView
+                                android:id="@+id/tv_evolution_chain_item_no3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/maplefont"
+                                android:text="@{@string/no + (evolution.evolution.size() > 2 ? evolution.evolution[2].number : null)}"
+                                android:textSize="20dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/iv_evolution_chain_item_pokemon3" />
+
+                            <TextView
+                                android:id="@+id/tv_evolution_chain_item_name3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/maplefont"
+                                android:text="@{evolution.evolution.size() > 2 ? evolution.evolution[2].name : null}"
+                                android:textSize="13dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_evolution_chain_item_no3" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_subdictionary_c_evolutionchain">
+
+                    <include
+                        layout="@layout/wiget_stats"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="55dp"
+                        android:layout_marginEnd="30dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:progressbar="@{progressbar}" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

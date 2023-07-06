@@ -14,8 +14,10 @@
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
     <color name="faded_activty">#60000000</color>
+    <color name="loading_box">#A0000000</color>
     <color name="dictionary_shadow">#80000000</color>
-
+    <color name="shimmer">#A0000000</color>
+    <!--type background-->
     <color name="type_normal">#A0A0A0</color>
     <color name="type_fire">#E56C32</color>
     <color name="type_water">#5185C5</color>
@@ -34,6 +36,13 @@
     <color name="type_dark">#4C4948</color>
     <color name="type_steel">#69A9C7</color>
     <color name="type_fairy">#DAB4D4</color>
+    <!--progress bar-->
+    <color name="progressbar_background">#999999</color>
+    <color name="progressbar_standard_stats">#80FF00</color>
+    <color name="progressbar_over_150_stats">#FFD700</color>
+    <color name="text_standard_stats">#000000</color>
+    <color name="text_over_150_stats">#FF0000</color>
+    <color name="progressbar_gold_background">#FF0000</color>
 
-
+    <color name="test">#1A50BCDF</color>
 </resources>
